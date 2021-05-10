@@ -10,7 +10,6 @@ pipeline {
       steps {
           sh '''
           echo "Setting up gcloud for impersonation"
-          gcloud config set auth/impersonate_service_account ${TF_VAR_terraform_service_account}
           echo "Adding bucket information to backends"
           for i in `find -name "backend.tf"`; do sed -i "s/UPDATE_ME/${TF_VAR_state_bucket}/" $i; done
           # TODO put elsewhere, read from versions.tf?
