@@ -19,9 +19,9 @@ pipeline {
                 script {
                     try {
                     sh "pipenv run pip install checkov"
-                   #sh "pipenv run checkov --directory envs/dev -o junitxml > result.xml || true"
+                   
 	            sh "pipenv run checkov --directory envs/shared -o junitxml > result-shared.xml || true"
-                   #junit "result.xml"
+                  
 	            junit "result-shared.xml"
         } catch (err) {
             if (currentBuild.result == 'UNSTABLE')
