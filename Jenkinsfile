@@ -1,12 +1,5 @@
 pipeline {
-   agent {
-        docker {
-            image 'gcr.io/acn-hybridcloudapplications/checkov:1.0'
-            args '-u root --privileged -v /var/run/docker.sock:/var/run/docker.sock'
-            label 'master'
-        }
-    }
-
+  agent none
   environment {
     _POLICY_REPO=""
   }
@@ -15,7 +8,13 @@ pipeline {
  
  
 	stage('test') {
-	 
+	   agent {
+        docker {
+            image 'gcr.io/acn-hybridcloudapplications/checkov:1.0'
+            args '-u root --privileged -v /var/run/docker.sock:/var/run/docker.sock'
+            label 'master'
+        }
+    }
             steps {
                 script {
                     try {
@@ -30,4 +29,4 @@ pipeline {
             }
         }
 }
-}	
+}
