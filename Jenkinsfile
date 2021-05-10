@@ -9,9 +9,7 @@ pipeline {
  
  
 	stage('test') {
-	  when {
-             branch 'main'
-      }
+	 
             steps {
                 script {
                     try {
