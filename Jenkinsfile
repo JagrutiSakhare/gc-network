@@ -31,7 +31,7 @@ pipeline {
                 branch 'dev'
                 branch 'tuc'
                 branch 'tud'
-                branch 'prd'
+                branch 'main'
                 branch 'cobande'
             }
         }
@@ -46,7 +46,7 @@ pipeline {
 	stage('test') {
 			when {
         anyOf {
-		    branch 'main'
+	    branch 'main'
             branch 'dev'
             branch 'tuc'
             branch 'tud'
@@ -73,7 +73,7 @@ pipeline {
             branch 'dev'
             branch 'tuc'
             branch 'tud'
-            branch 'prd'
+            branch 'main'
             branch 'cobande'
         }
       }
@@ -99,7 +99,7 @@ pipeline {
             branch 'dev'
             branch 'tuc'
             branch 'tud'
-            branch 'prd'
+            branch 'main'
             branch 'cobande'
         }
       }
@@ -125,7 +125,7 @@ pipeline {
             branch 'dev'
             branch 'tuc'
             branch 'tud'
-            branch 'prd'
+            branch 'main'
             branch 'cobande'
         }
       }
@@ -151,7 +151,7 @@ pipeline {
             branch 'dev'
             branch 'tuc'
             branch 'tud'
-            branch 'prd'
+            branch 'main'
             branch 'cobande'
         }
       }
@@ -162,32 +162,6 @@ pipeline {
           script {
             def userInput = input(id: 'confirm', message: 'Apply Terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Apply terraform', name: 'confirm'] ])
           }
-        }
-    }
-    stage('TF apply') {
-      when {
-        anyOf {
-            branch 'dev'
-            branch 'tuc'
-            branch 'tud'
-            branch 'prd'
-            branch 'cobande'
-        }
-      }
-      steps {
-          sh '''
-          export PATH=$(pwd)/bin:$PATH
-          if [ "cobande" = ${BRANCH_NAME} ]; then
-              #for ENVIRONMENT in dev tuc tud prd
-              for ENVIRONMENT in dev
-              do
-                ./tf-wrapper.sh apply ${ENVIRONMENT}
-              done
-          else
-              ENVIRONMENT=${BRANCH_NAME}
-              ./tf-wrapper.sh apply ${ENVIRONMENT} $POLICY_REPO
-          fi
-          '''
         }
     }
   }
