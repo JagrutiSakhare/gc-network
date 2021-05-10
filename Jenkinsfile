@@ -9,15 +9,8 @@ pipeline {
  
  
 	stage('test') {
-			when {
-        anyOf {
-		    branch 'main'
-            branch 'dev'
-            branch 'tuc'
-            branch 'tud'
-            branch 'prd'
-            branch 'cobande'
-        }
+	  when {
+             branch 'main'
       }
             steps {
                 script {
