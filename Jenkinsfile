@@ -10,7 +10,7 @@ pipeline {
 	stage('test') {
 	   agent {
         docker {
-            image 'gcr.io/acn-hybridcloudapplications/checkov:1.0'
+            image 'harshasakhare/checkov:latest'
             label 'master'
         }
     }
