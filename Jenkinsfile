@@ -10,7 +10,7 @@ pipeline {
 	stage('test') {
 	   agent {
         docker {
-            image 'harshasakhare/checkov:latest'
+            image 'harshasakhare/checkov:1.0'
             label 'master'
         }
     }
