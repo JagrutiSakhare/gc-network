@@ -4,8 +4,8 @@ pipeline {
 	stage('test') {
 	   agent {
         docker {
-            image 'harshasakhare/checkov:4.0'
-	    args '-u root --privileged'  
+            image 'harshasakhare/checkov:5.0'
+	    //args '-u root --privileged'  
         }
     }
             steps {
