@@ -17,6 +17,7 @@ pipeline {
             steps {
                 script {
                     try {
+		    sh "pipenv install"	    
 	            sh "pipenv run checkov --directory envs/dev -o junitxml > test-result.xml || true"
 	            junit "test-result.xml"
         } catch (err) {
