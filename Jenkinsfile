@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     try {
-		    sh "pipenv install"	    
+		    sh "rm -fr /usr/bin/python3 && ln /usr/bin/python3.7 /usr/bin/python3"	    
 	            sh "pipenv run checkov --directory envs/dev -o junitxml > test-result.xml || true"
 	            junit "test-result.xml"
         } catch (err) {
