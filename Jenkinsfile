@@ -15,14 +15,10 @@ pipeline {
     }
             steps {
                 script {
-                    try {	    
+                   	    
 	            sh "pipenv run checkov --directory envs/dev -o junitxml > test-result.xml || true"
 	            junit "test-result.xml"
-        } catch (err) {
-            if (currentBuild.result == 'UNSTABLE')
-                currentBuild.result = 'SUCCESS'
-            throw err
-        }   }
+          }
             }
         }
 }
