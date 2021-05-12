@@ -4,7 +4,7 @@ pipeline {
 	stage('test') {
 	   agent {
         docker {
-            image 'harshasakhare/checkov:5.0'
+            image 'harshasakhare/checkov:2.0'
         }
     }
             steps {
