@@ -10,7 +10,6 @@ pipeline {
     }
             steps {
               script {	
-                sh "export PATH $PATH:$HOME/.local/bin"
 	        sh "pipenv run checkov --directory envs/dev -o junitxml > test-result.xml || true"
 	        junit "test-result.xml"
           }
