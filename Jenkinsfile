@@ -10,8 +10,7 @@ pipeline {
     }
             steps {
               script {	
-                sh "RUN echo $whoami"
-                sh "ENV PATH $PATH:$HOME/.local/bin"
+                sh "export PATH $PATH:$HOME/.local/bin"
 	        sh "pipenv run checkov --directory envs/dev -o junitxml > test-result.xml || true"
 	        junit "test-result.xml"
           }
