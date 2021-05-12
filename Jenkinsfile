@@ -5,20 +5,14 @@ pipeline {
 	   agent {
         docker {
             image 'harshasakhare/checkov:6.0'
-        }
-    }
+           }
+       }
             steps {
               script {	
 	        sh "checkov --directory envs/dev -o junitxml > test-result.xml || true"
 	        junit "test-result.xml"
-          }
+                 }
             }
-		post {
-                  success {
-                    junit 'test-result.xml'
-                   sh "test ${currentBuild.currentResult} != UNSTABLE"
-       }
-    }
         }
 }
 }
