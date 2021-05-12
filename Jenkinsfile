@@ -13,6 +13,12 @@ pipeline {
 	        junit "test-result.xml"
           }
             }
+		post {
+                  success {
+                    junit 'test-result.xml'
+                   sh "test ${currentBuild.currentResult} != UNSTABLE"
+       }
+    }
         }
 }
 }
