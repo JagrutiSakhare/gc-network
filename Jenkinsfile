@@ -11,7 +11,6 @@ pipeline {
 	   agent {
         docker {
             image 'harshasakhare/checkov:4.0'
-            label 'master'
         }
     }
             steps {
