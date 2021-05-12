@@ -1,18 +1,11 @@
 pipeline {
   agent none
-  environment {
-    _POLICY_REPO=""
-  }
-
   stages {
- 
- 
 	stage('test') {
 	   agent {
         docker {
             image 'harshasakhare/checkov:4.0'
-	    args '-u root --privileged'
-	    
+	    args '-u root --privileged'  
         }
     }
             steps {
