@@ -5,7 +5,7 @@ pipeline {
 	   agent {
         docker {
             image 'harshasakhare/checkov:4.0'
-	    args '-u $USER --privileged'  
+	    args '-u $root --privileged'  
         }
     }
             steps {
