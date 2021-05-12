@@ -17,7 +17,6 @@ pipeline {
             steps {
                 script {
                     try {
-	            sh "chmod 0777 /var/run/docker.sock"
                     sh "pipenv run pip install checkov"
 	            sh "pipenv run checkov --directory envs/dev -o junitxml > result.xml || true"
 	            junit "result.xml"
