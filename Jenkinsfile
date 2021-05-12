@@ -11,14 +11,12 @@ pipeline {
 	   agent {
         docker {
             image 'harshasakhare/checkov:4.0'
+	    args '-u root --privileged'
 	    
         }
     }
             steps {
-                script {
-		    sh "usermod -a -G pipenv $USER"
-                    sh "pipenv install"
-                    sh "pipenv run pip install checkov"  	    
+                script {	    
 	            sh "pipenv run checkov --directory envs/dev -o junitxml > test-result.xml || true"
 	            junit "test-result.xml"
           }
