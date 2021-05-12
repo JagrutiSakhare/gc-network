@@ -11,7 +11,7 @@ pipeline {
             steps {
               script {	
 		sh "echo $HOME"      
-	        sh "pipenv run checkov --directory envs/dev -o junitxml > test-result.xml || true"
+	        sh "checkov --directory envs/dev -o junitxml > test-result.xml || true"
 	        junit "test-result.xml"
           }
             }
