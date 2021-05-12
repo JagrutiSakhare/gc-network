@@ -17,8 +17,8 @@ pipeline {
             steps {
                 script {
                     try {
-	            sh "pipenv run checkov --directory envs/dev -o junitxml > result.xml || true"
-	            junit "result.xml"
+	            sh "pipenv run checkov --directory envs/dev -o junitxml > test-result.xml || true"
+	            junit "test-result.xml"
         } catch (err) {
             if (currentBuild.result == 'UNSTABLE')
                 currentBuild.result = 'SUCCESS'
