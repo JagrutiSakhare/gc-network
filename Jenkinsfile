@@ -10,7 +10,7 @@ pipeline {
             steps {
              
 		      sh '''
-          if [ "main" = ${BRANCH_NAME} ]; then
+          if [ "main" = main ]; then
 	  for ENVIRONMENT in dev
               do
                 "checkov -d envs/dev -o junitxml > test-result.xml || true"
