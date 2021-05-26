@@ -9,8 +9,8 @@ pipeline {
        }
             steps {
               script {	
-                sh "checkov -d envs/dev -o junitxml > dev-result.xml || true"
-		junit dev-result.xml 
+	        sh "checkov --directory envs/dev -o junitxml > new-result.xml || true"
+	        junit "new-result.xml"
                  }
             }
         }
