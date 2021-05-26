@@ -8,7 +8,7 @@ pipeline {
            }
        }
             steps {
-              script {	
+             
 		      sh '''
           if [ "main" = ${BRANCH_NAME} ]; then
 	  for ENVIRONMENT in dev
@@ -20,7 +20,7 @@ pipeline {
               echo "I else, branch not main or not in dev"
           fi
           '''
-                 }
+                 
             }
         }
 }
