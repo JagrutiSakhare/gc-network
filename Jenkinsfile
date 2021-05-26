@@ -9,8 +9,9 @@ pipeline {
        }
             steps {
               script {	
-                "checkov -d envs/dev -o junitxml > test-result.xml || true"
-	            junit "test-result.xml"
+                "checkov -d envs/dev -o junitxml > dev-result.xml || true"
+		"checkov -d envs/tuc -o junitxml > tuc-result.xml || true"
+		 xunitmerge dev-result.xml tuc-result.xml
                  }
             }
         }
