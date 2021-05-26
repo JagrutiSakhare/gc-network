@@ -11,7 +11,7 @@ pipeline {
               script {	
 	        sh "checkov --directory envs/dev -o junitxml > new-result.xml || true"
 		sh "checkov --directory envs/tuc -o junitxml > tuc-result.xml || true"
-	        junit "*-results.xml"
+	         junit '**/test-results/test/*.xml'
                  }
             }
         }
