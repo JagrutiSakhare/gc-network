@@ -9,8 +9,16 @@ pipeline {
        }
             steps {
               script {	
-	        sh "checkov -d envs/dev -d envs/tuc -o junitxml > test-result.xml || true"
+		      sh '''
+          if [ "main" = ${BRANCH_NAME} ]; then
+              do
+                "checkov -d envs/dev -o junitxml > test-result.xml || true"
 	        junit "test-result.xml"
+              done
+          else
+              echo "I else, branch not main"
+          fi
+          '''
                  }
             }
         }
