@@ -8,19 +8,10 @@ pipeline {
            }
        }
             steps {
-             
-		      sh '''
-          if [ "main" = main ]; then
-	  for ENVIRONMENT in dev
-              do
+              script {	
                 "checkov -d envs/dev -o junitxml > test-result.xml || true"
-	        junit "test-result.xml"
-              done
-          else
-              echo "I else, branch not main or not in dev"
-          fi
-          '''
-                 
+	            junit "test-result.xml"
+                 }
             }
         }
 }
